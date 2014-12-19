@@ -1,0 +1,28 @@
+body {
+  background: #eee;
+}
+
+div {
+   margin-bottom: 10px;
+   padding: 10px;
+}
+
+.vijftig {
+background: blue;
+white-space: nowrap;
+overflow: inherit;
+}
+
+.tien {
+background: red;
+white-space: nowrap;
+overflow: inherit;
+}
+
+.button1 {
+background: blue;
+}
+
+.button2 {
+background: red;
+}
