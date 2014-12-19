@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Burgerlijke staat</title>
+        <meta charset="utf-8">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	
+    <body>
+        <h1>Burgerlijke staat in 1950 en 2010</h1>
+		<h2>De verhoudingen onder Nederlandse inwoners</h2>
+
+		<button class="button1" id="button1">1950</button>
+		<button class="button2" id="button2">2010</button>
+		<button id="button3">Toon alles</button>
+		
+        <ul></ul>
+
+        <script src="lib/d3.min.js"></script>
+        <script src="lib/jquery.js"></script>
+
+        <script>
+           d3.csv('Data_bevolking.csv', function(d) {
+            for (var i = 0; i < d.length; i = i + 1) {
+                    var aantal = d[i].aantal;
+					var jaartal = d[i].Jaartal;
+					var staat = d[i].staat
+					var cls = d[i].cls;
+                    var text = '<div id ="' + cls + '" name ="' + cls + '" class="'+ cls + '" style="width:0;">' + aantal + " - " + staat + '</div>';
+
+                    $("ul").append(text);
+					
+                $("button").click(function() {
+				$("div").each(function(i, el) {
+						var aantal = d[i].aantal;
+                        var width =  (aantal / 6500) + 'px';
+						var id = d[i].id;
+						var cls = d[i].cls;
+						var testval = id % 2;
+							$(el).animate({'width' : width}, 1000);
+                    })
+	            });
+							
+						data1 = d3.selectAll(".tien");
+						data2 = d3.selectAll(".vijftig");
+						
+				$("#button1").click(function() {
+					data1.style({'display' : 'none'});
+					data2.style({'display' : 'block'});
+				});
+				
+                $("#button2").click(function() {
+					data1.style({'display' : 'block'});
+					data2.style({'display' : 'none'});
+                });
+
+                $("#button3").click(function() {
+					data1.style({'display' : 'block'});
+					data2.style({'display' : 'block'});
+                });
+            }});
+
+        </script>
+    </body>
+</html>
